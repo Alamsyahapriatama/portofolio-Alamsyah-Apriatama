@@ -4,7 +4,8 @@ useHead({
   meta: [
     {
       name: "description",
-      content: "Tempat belajar IT Gratis.",
+      content:
+        "Belajar Programming, Networking, sekaligus diskusi islam sambil menunggu buka puasa di bulan penuh berkah.",
     },
   ],
   link: [{ rel: "icon", type: "image/png", href: "/logo.png" }],
@@ -13,10 +14,8 @@ useHead({
 <template>
   <div>
     <SectionsHomeHeroSection />
-    <SectionsHomeLatestPodcast />
-    <SectionsHomePopularPodcasts />
-    <SectionsAboutPodux />
-    <SectionsWhyUs />
+    <SectionsAboutIFC />
+    <SectionsWhenWhere />
     <SectionsCallToAction />
   </div>
 </template>
