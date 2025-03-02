@@ -14,7 +14,7 @@
             </span>
           </div>
           <div class="relative">
-            <AtomsTitle texte="Syarat untuk ikut IFC" />
+            <AtomsTitle texte="Syarat untuk ikut IFC" id="requirements" />
             <div class="space-y-4 py-6">
               <div
                 class="p-4 rounded-xl border border-box-border transition hover:bg-gray-200 dark:hover:bg-box-bg"
@@ -43,7 +43,7 @@
                 </p>
               </div>
             </div>
-            <AtomsTitle texte="Kapan dan Dimana Tempatnya?" />
+            <AtomsTitle texte="Kapan dan Dimana Tempatnya?" id="when-where" />
             <div class="space-y-4 pt-8">
               <div
                 class="p-4 rounded-xl border border-box-border transition hover:bg-gray-200 dark:hover:bg-box-bg"

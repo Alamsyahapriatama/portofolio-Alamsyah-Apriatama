@@ -79,7 +79,7 @@ const submitForm = async (event: Event) => {
 </script>
 
 <template>
-  <section class="py-20">
+  <section class="py-20" id="register">
     <AtomsContainer>
       <div
         class="w-full relative py-8 md:py-10 px-6 md:px-8 rounded-2xl bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-gray-900 dark:to-body-color"
@@ -215,7 +215,7 @@ const submitForm = async (event: Event) => {
               <!-- Tombol Submit -->
               <button
                 @click="submitForm"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold text-lg transition duration-300"
+                class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md font-semibold text-lg transition duration-300"
               >
                 Daftar Sekarang
               </button>

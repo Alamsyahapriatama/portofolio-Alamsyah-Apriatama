@@ -1,5 +1,5 @@
 <template>
-  <section class="relative w-full">
+  <section class="relative w-full lg:mt-5">
     <div class="absolute top-0 inset-x-0 h-64 flex items-start">
       <div
         class="h-24 w-2/3 bg-gradient-to-br from-primary opacity-20 blur-2xl dark:from-[#570cac] dark:invisible dark:opacity-40"
@@ -49,7 +49,7 @@
             class="flex items-center gap-3 pt-9 flex-col sm:flex-row sm:w-max sm:mx-auto lg:mx-0"
           >
             <AtomsLinkBtn
-              href="#"
+              href="#register"
               variant="primary"
               class="w-full sm:w-max flex justify-center"
             >

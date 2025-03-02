@@ -26,14 +26,14 @@
             </span>
           </div>
           <div class="relative">
-            <AtomsTitle texte="Tentang IT Fasting Camp" />
+            <AtomsTitle texte="Tentang IT Fasting Camp" id="about" />
             <p class="text-gray-600 dark:text-gray-300 pt-5">
               IT Fasting Camp adalah workshop intensif 2 hari yang dirancang
               khusus untuk mahasiswa aktif yang ingin mengembangkan keterampilan
               Vue.js sambil mendalami nilai-nilai Islam dalam suasana Ramadan.
             </p>
             <div class="pt-5">
-              <AtomsTitle texte="Kenapa harus ikut?" />
+              <AtomsTitle texte="Kenapa harus ikut?" id="why-join" />
               <ul class="text-left space-y-4 mt-4">
                 <li class="flex items-start">
                   <span class="text-green-500 text-xl mr-3">✅</span>

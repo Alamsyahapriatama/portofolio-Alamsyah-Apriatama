@@ -8,7 +8,7 @@ useHead({
         "Belajar Programming, Networking, sekaligus diskusi islam sambil menunggu buka puasa di bulan penuh berkah.",
     },
   ],
-  link: [{ rel: "icon", type: "image/png", href: "/logo.png" }],
+  link: [{ rel: "icon", type: "image/png", href: "/logo-ifc.png" }],
 });
 </script>
 <template>
