@@ -28,9 +28,10 @@
           <div class="relative">
             <AtomsTitle texte="Tentang IT Fasting Camp" id="about" />
             <p class="text-gray-600 dark:text-gray-300 pt-5">
-              IT Fasting Camp adalah workshop intensif 2 hari yang dirancang
-              khusus untuk mahasiswa aktif yang ingin mengembangkan keterampilan
-              Vue.js sambil mendalami nilai-nilai Islam dalam suasana Ramadan.
+              IT Fasting Camp adalah workshop intensif selama 2 hari yang
+              dirancang khusus untuk mahasiswa aktif yang ingin mengembangkan
+              keterampilan Vue.js sambil mendalami nilai-nilai Islam dalam
+              suasana Ramadan.
             </p>
             <div class="pt-5">
               <AtomsTitle texte="Kenapa harus ikut?" id="why-join" />

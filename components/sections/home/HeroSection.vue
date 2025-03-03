@@ -41,8 +41,9 @@
           <p
             class="text-gray-600 dark:text-gray-300 pt-8 text-center lg:text-left mx-auto max-w-xl"
           >
-            Yuk bareng-bareng belajar programming, networking, sekaligus diskusi
-            islam sambil menunggu buka puasa di bulan penuh berkah!
+            Jadikan Ramadhan lebih bermakna! Belajar Vue.js dari dasar, bangun
+            koneksi, dan diskusi Islami sambil menanti berbuka. Ilmu,
+            networking, dan keberkahan dalam satu event! 💡🌙
           </p>
 
           <div
