@@ -1,7 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ["@nuxtjs/color-mode", "@nuxt/image"],
-  css: ["~/assets/css/app.css"],
+  css: ["~/assets/css/app.css", "@fortawesome/fontawesome-free/css/all.min.css", "leaflet/dist/leaflet.css"],
+
+  pages: true,
+
   colorMode: {
     preference: "dark", // default value of $colorMode.preference
     fallback: "dark", // fallback value if not system preference found
@@ -12,10 +15,13 @@ export default defineNuxtConfig({
     classSuffix: "",
     storageKey: "nuxt-color-mode",
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
+  compatibilityDate: "2025-03-05",
 });

@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 const isOpen = useState("isOpen", () => false);
-function changeTheme(event: MouseEvent) {
-  event.preventDefault();
+function changeTheme(artikel: MouseEvent) {
+  artikel.prartikelDefault();
   isOpen.value = !isOpen.value;
 }
 </script>
 <template>
   <div class="relative py-2">
     <button
-      class="outline-none bg-transparent p-2.5 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+      class="outline-none bg-transparent p-2.5 rounded-full text-black-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
       @click="
-        (event) => {
-          changeTheme(event);
+        (artikel) => {
+          changeTheme(artikel);
         }
       "
     >
@@ -40,7 +40,7 @@ function changeTheme(event: MouseEvent) {
       >
         <ul class="flex flex-col" @click="isOpen = false">
           <li
-            class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-200"
+            class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover:bg-gray-800 text-black-600 dark:text-black-200"
             @click="$colorMode.preference = 'system'"
           >
             <span>
@@ -50,7 +50,7 @@ function changeTheme(event: MouseEvent) {
           </li>
 
           <li
-            class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-200"
+            class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover:bg-gray-800 text-black-600 dark:text-black-200"
             @click="$colorMode.preference = 'light'"
           >
             <span>
@@ -60,7 +60,7 @@ function changeTheme(event: MouseEvent) {
           </li>
 
           <li
-            class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-200"
+            class="flex select-none cursor-pointer items-center gap-3 px-2 py-2 rounded-md transition hover:bg-gray-100 dark:hover:bg-gray-800 text-black-600 dark:text-black-200"
             @click="$colorMode.preference = 'dark'"
           >
             <span>

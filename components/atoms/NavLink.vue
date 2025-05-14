@@ -7,7 +7,7 @@
 </script>
 <template>
     <li class="lg:inline-flex">
-        <NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="href">
+        <NuxtLink class="lg:inline-flex transition hover:text-black ease-linear text-xl" :to="href">
             {{ text }}
         </NuxtLink>
     </li>

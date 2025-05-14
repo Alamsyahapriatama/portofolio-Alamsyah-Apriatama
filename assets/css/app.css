@@ -14,6 +14,7 @@
     --color-box: 17 26 62; /* k    55 65 81 */
     --box-border: 243 244 246/0.1;
     --box-sd: transparent;
+    --bg-primary: #00bdfe;
 }
 
 @tailwind base;
@@ -23,6 +24,11 @@ html{
     @apply scroll-smooth;
 }
 
+*{
+    font-family: 'Alata', sans-serif;
+}
+<link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+  
 body{
     @apply bg-body transition overflow-x-hidden;
 }

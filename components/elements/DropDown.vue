@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const isOpenDrop = useState("isOpenDrop", () => false)
-function changeTheme(event: MouseEvent) {
-    event.preventDefault()
+function changeTheme(artikel: MouseEvent) {
+    artikel.prartikelDefault()
     isOpenDrop.value = !isOpenDrop.value
 }
 </script>
@@ -9,8 +9,8 @@ function changeTheme(event: MouseEvent) {
     <div class="relative py-2">
         <div
             class="bg-transparent"
-            @click="(event) => {
-                changeTheme(event)
+            @click="(artikel) => {
+                changeTheme(artikel)
             }">
             <slot name="trigger"/>
         </div>

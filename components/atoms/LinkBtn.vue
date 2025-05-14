@@ -22,6 +22,9 @@ else if(variant === "secondary"){
 else if(variant === "costum"){
     spanClass=costumSpanClass
     textCl = costumTextColor
+}else {
+    spanClass=costumSpanClass
+    textCl = costumTextColor
 }
 
 </script>

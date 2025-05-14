@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="bg-gray-100 dark:bg-body border-t border-gray-200 dark:border-gray-700"
+    class="bg-gray-100 dark:bg-[#9f91e1]"
   >
     <div
       class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10"
@@ -9,31 +9,29 @@
       <div>
         <NuxtLink to="/" class="flex items-center gap-3">
           <span class="flex">
-            <img
-              src="/logo-ifc.png"
+            <NuxtImg
+              :src="logo"
               alt="logo"
-              class="w-6 h-6 rounded-l-full"
+              class="w-full h-12 rounded-l-full"
             />
-          </span>
-          <span class="text-xl font-bold text-gray-700 dark:text-white"
-            >IT Fasting Camp</span
-          >
+          </span> 
+          <h3 class="text-left text-black text-lg">GLOTLINK</h3>
         </NuxtLink>
-        <p class="text-gray-600 dark:text-gray-300 mt-4">
-          Program intensif belajar programming di bulan Ramadhan.
+        <p class="text-black dark:text-black mt-4">
+          Digitalisasikan Bisnismu Bersama GLOTLINK Semua Yang Anda Butuhkan Untuk Membangun Bisnis Digital Yang Sukses!
         </p>
       </div>
 
       <!-- Navigation Links -->
       <div>
-        <h3 class="text-lg font-semibold text-gray-700 dark:text-white mb-4">
+        <h3 class="text-lg font-semibold text-black dark:text-black mb-4">
           Navigasi
         </h3>
-        <ul class="space-y-3">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-1">
           <li v-for="link in quickLinks" :key="link.href">
             <NuxtLink
               :to="link.href"
-              class="text-gray-600 dark:text-gray-300 hover:text-primary transition"
+              class="text-black-600 dark:text-black hover:text-primary transition"
             >
               {{ link.text }}
             </NuxtLink>
@@ -43,35 +41,24 @@
 
       <!-- Contact Information -->
       <div>
-        <h3 class="text-lg font-semibold text-gray-700 dark:text-white mb-4">
+        <h3 class="text-lg font-semibold text-black dark:text-black mb-4">
           Kontak
         </h3>
         <div class="space-y-3">
           <div>
             <a
-              href="https://wa.me/6282117902193"
-              target="_blank"
-              class="text-gray-600 dark:text-gray-300 mt-2"
+              class="text-black-600 dark:text-black mt-2"
             >
-              Whatsapp 1: +62 821-1790-2193
+              Email: glotlink@gmail.com
             </a>
           </div>
           <div>
             <a
-              href="https://wa.me/6289637447757"
+              href="https://wa.me/6281297447501"
               target="_blank"
-              class="text-gray-600 dark:text-gray-300 mt-2"
+              class="text-black-600 dark:text-black mt-2"
             >
-              Whatsapp 2: +62 896-3744-7757
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://wa.me/6282118939490"
-              target="_blank"
-              class="text-gray-600 dark:text-gray-300 mt-2"
-            >
-              Whatsapp 3: +62 821-1893-9490
+              Whatsapp: 0812-9744-7501
             </a>
           </div>
         </div>
@@ -80,19 +67,24 @@
 
     <!-- Copyright Section -->
     <div
-      class="py-4 bg-gray-200 dark:bg-gray-800 text-center text-gray-600 dark:text-gray-300"
+      class="py-4 bg-gray-200 dark:bg-[#4633a8] text-center text-black-600 dark:text-gray-300"
     >
-      &copy; {{ new Date().getFullYear() }} IT Fasting Camp. All Rights
-      Reserved.
+      &copy; {{ new Date().getFullYear() }}  GLOTLINK
     </div>
   </footer>
 </template>
 
 <script lang="ts" setup>
-const quickLinks = [
-  { text: "Tentang IFC", href: "#about" },
-  { text: "Kenapa Harus Ikut?", href: "#why-join" },
-  { text: "Syarat Ikut IFC", href: "#requirements" },
-  { text: "Kapan Waktunya?", href: "#when-where" },
-];
+  const quickLinks = [
+    { text: "Home", href: "/" },
+    { text: "Kelas", href: "/kelas" },
+    { text: "Program", href: "/program" },
+    { text: "Lokasi", href: "/lokasi" },
+    { text: "Blog", href: "/blog" },
+    { text: "Karir", href: "/karir" },
+    { text: "Hubungi Kami", href: "/hubungi-kami" },
+  ];
+
+  const logo = ref('/logo.webp')
+  const app_name = ref()
 </script>
