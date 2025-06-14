@@ -10,31 +10,121 @@
                 </span>
                 </div>
                 <div class="relative">
-                  <h3 class="text-center text-black text-3xl font-semibold">Kenapa harus belajar di GLOTLINK Languages?</h3>
+                  <h3 class="text-center text-black text-3xl font-semibold">{{ homes?.why_title }}</h3>
                 </div>
             </div>
         </div>
   
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-6 pt-2 mt-[-80px] md:mt-[-100px]">
+          
           <div 
-            v-for="(artikel, index) in artikelPosts" 
-            :key="index" 
-            class="shadow-lg transform transition bg-[#f8f9fa] duration-300 ease-in-out hover:scale-105 py-10"
+            class="shadow-lg transform transition bg-[#41A8DF] duration-300 ease-in-out hover:scale-105 py-10"
           >
             <!-- ICON CENTERED -->
             <div class="flex justify-center items-center text-black text-2xl mx-auto">
               <NuxtImg 
-                :src="artikel.image"
+                :src="homes?.why[0].image"
                 alt="artikel.title"
                 class="w-2/5"
               />
             </div>
 
-            <h3 class="mt-4 text-black-800 text-center dark:text-black-200 text-lg font-semibold">
-              {{ artikel.title }}
+            <h3 class="mt-4 text-white-800 text-center dark:text-white-200 text-xl font-semibold">
+              {{ homes?.why[0].title }}
             </h3>
-            <p class="pt-4 px-8">Didirikan lebih dari 17 tahun yang lalu sejak 2007, sehingga lebih berpengalaman dan terpercaya.</p>
+            <div class="pt-4 px-8 text-lg md:text-lg text-center" v-html="homes?.why[0].description"></div>
           </div>
+
+          <div 
+            class="shadow-lg transform transition bg-[#41A8DF] duration-300 ease-in-out hover:scale-105 py-10"
+          >
+            <!-- ICON CENTERED -->
+            <div class="flex justify-center items-center text-black text-2xl mx-auto">
+              <NuxtImg 
+                :src="homes?.why[1].image"
+                alt="artikel.title"
+                class="w-2/5"
+              />
+            </div>
+
+            <h3 class="mt-4 text-black-800 text-center dark:text-black-200 text-xl font-semibold">
+              {{ homes?.why[1].title }}
+            </h3>
+            <div class="pt-4 px-8 text-lg md:text-lg text-center" v-html="homes?.why[1].description"></div>
+          </div>
+
+          <div 
+            class="shadow-lg transform transition bg-[#41A8DF] duration-300 ease-in-out hover:scale-105 py-10"
+          >
+            <!-- ICON CENTERED -->
+            <div class="flex justify-center items-center text-black text-2xl mx-auto">
+              <NuxtImg 
+                :src="homes?.why[2].image"
+                alt="artikel.title"
+                class="w-2/5"
+              />
+            </div>
+
+            <h3 class="mt-4 text-black-800 text-center dark:text-black-200 text-xl font-semibold">
+              {{ homes?.why[2].title }}
+            </h3>
+            <div class="pt-4 px-8 text-lg md:text-lg text-center" v-html="homes?.why[2].description"></div>
+          </div>
+
+          <div 
+            class="shadow-lg transform transition bg-[#41A8DF] duration-300 ease-in-out hover:scale-105 py-10"
+          >
+            <!-- ICON CENTERED -->
+            <div class="flex justify-center items-center text-black text-2xl mx-auto">
+              <NuxtImg 
+                :src="homes?.why[3].image"
+                alt="artikel.title"
+                class="w-2/5"
+              />
+            </div>
+
+            <h3 class="mt-4 text-black-800 text-center dark:text-black-200 text-xl font-semibold">
+              {{ homes?.why[3].title }}
+            </h3>
+            <div class="pt-4 px-8 text-lg md:text-lg text-center" v-html="homes?.why[3].description"></div>
+          </div>
+
+          <div 
+            class="shadow-lg transform transition bg-[#41A8DF] duration-300 ease-in-out hover:scale-105 py-10"
+          >
+            <!-- ICON CENTERED -->
+            <div class="flex justify-center items-center text-black text-2xl mx-auto">
+              <NuxtImg 
+                :src="homes?.why[4].image"
+                alt="artikel.title"
+                class="w-2/5"
+              />
+            </div>
+
+            <h3 class="mt-4 text-black-800 text-center dark:text-black-200 text-xl font-semibold">
+              {{ homes?.why[4].title }}
+            </h3>
+            <div class="pt-4 px-8 text-lg md:text-lg text-center" v-html="homes?.why[4].description"></div>
+          </div>
+
+          <div 
+            class="shadow-lg transform transition bg-[#41A8DF] duration-300 ease-in-out hover:scale-105 py-10"
+          >
+            <!-- ICON CENTERED -->
+            <div class="flex justify-center items-center text-black text-2xl mx-auto">
+              <NuxtImg 
+                :src="homes?.why[5].image"
+                alt="artikel.title"
+                class="w-2/5"
+              />
+            </div>
+
+            <h3 class="mt-4 text-black-800 text-center dark:text-black-200 text-xl font-semibold">
+              {{ homes?.why[5].title }}
+            </h3>
+            <div class="pt-4 px-8 text-lg md:text-lg text-center" v-html="homes?.why[5].description"></div>
+          </div>
+
         </div>
 
       </AtomsContainer>
@@ -42,57 +132,18 @@
   </template>
   
 
-  <script>
+<script setup lang="ts">
   import { useRoute, useRouter } from 'vue-router';
   import { ref, onMounted } from 'vue';
-  export default {
-    setup() {
-      const route = useRoute();
-      const router = useRouter();
-      
-      const artikelPosts = [
-        { 
-          id: 1,
-          image: '/images/professional-services.webp', 
-          title: 'Experienced Institution',
-        },
-        { 
-          id: 2,
-          image: '/images/platform.webp', 
-          title: 'Academic Support',  
-        },
-        { 
-          id: 3,
-          image: '/images/business-people.webp', 
-          title: 'Small Class', 
-        },
-        { 
-          id: 4,
-          image: '/images/maintenance.webp', 
-          title: 'Certified Teacher',
-        },
-        { 
-          id: 5,
-          image: '/images/maintenance.webp', 
-          title: 'Online Academic System',
-        },
-        { 
-          id: 6,
-          image: '/images/maintenance.webp', 
-          title: 'Qualified Coursebook',
-        },
-      ];
+
+  import { getHome } from "@/composables/utils";
   
-      const goToBlog = (id) => {
-        // Ganti dengan navigasi ke halaman artikel detail
-        router.push(`/artikel/${id}`);
-        
-      };
+  const homes = ref<any>(null);
   
-      return { artikelPosts, goToBlog };
-    },
-  };
-  </script>
+  onMounted(async () => {
+    homes.value = await getHome();
+  });
+</script>
 
 <style>
     @keyframes fade-in {

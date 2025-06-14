@@ -11,7 +11,7 @@
                     </span>
                     </div>
                     <div class="relative">
-                      <h3 class="text-center text-black text-3xl font-semibold">Paket Harga di Glotlink</h3>
+                      <h3 class="text-center text-black text-3xl font-semibold">Paket Harga di Belajar Asik</h3>
                     </div>
                 </div>
           </div>
@@ -76,7 +76,7 @@ const layanans = ref<Layanan[]>([]);
 // Fetch API
 const fetchLayanans = async () => {
     try {
-    const response = await fetch('https://api-community-management.glotlink/layanan?orderBy=nomor&order=ASC', {
+    const response = await fetch('https://api-community-management.lesbahasa/layanan?orderBy=nomor&order=ASC', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const fetchLayanans = async () => {
         title: item.title,
         content: item.content,
         note: item.note,
-        image: `https://api-community-management.glotlink/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
+        image: `https://api-community-management.lesbahasa/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
         nominal: item.nominal,
         }));
     } else {

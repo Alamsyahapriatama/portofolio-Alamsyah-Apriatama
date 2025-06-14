@@ -1,9 +1,10 @@
 <template>
   <SectionsProgramHero />
-  <section v-if="isDetailPage" class="pt-20">
+  <section v-if="isDetailPage" class="pt-12 py-12">
     <AtomsContainer>
-      <div class="lg:h-full w-full">
-        <div class="relative">
+      <div class="flex flex-col lg:flex-row gap-8 w-full">
+        <!-- Kolom Kiri (Konten Program) -->
+        <div class="lg:w-3/5 w-full">
           <div v-if="program">
             <h1 class="text-3xl font-bold text-black-800 dark:text-black-200">
               {{ program.name }}
@@ -22,40 +23,37 @@
             <p>Program tidak ditemukan.</p>
           </div>
         </div>
-      </div>
-      <div class="bg-white rounded-xl shadow-md p-8 max-w-xl mx-auto">
-        <h2 class="text-2xl font-bold mb-6 text-center text-black">
-          Form Pendaftaran
-        </h2>
-        <form class="grid grid-cols-1 gap-4">
-          <input
-            type="text"
-            placeholder="Nama Lengkap"
-            required
-            class="border p-2 rounded"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            required
-            class="border p-2 rounded"
-          />
-          <input
-            type="tel"
-            placeholder="No HP"
-            required
-            class="border p-2 rounded"
-          />
-          <button
-            type="submit"
-            class="bg-[#4633a8] text-white py-2 rounded hover:bg-[#372b89]"
-          >
-            Submit
-          </button>
-        </form>
+
+        <!-- Kolom Kanan (Form) -->
+        <div class="lg:w-2/5 w-full bg-white rounded-xl shadow-md p-8 mt-[-20px]">
+          <h2 class="text-2xl font-bold mb-6 text-center text-black">
+            Form Pendaftaran
+          </h2>
+          <form class="grid grid-cols-1 gap-4" @submit.prevent="handleSubmit">
+            <input type="text" v-model="form.name" placeholder="Nama Lengkap" required class="border p-2 rounded" />
+            <input type="email" v-model="form.email" placeholder="Email" required class="border p-2 rounded" />
+            <input type="tel" v-model="form.whatsapp" placeholder="No HP" required class="border p-2 rounded" />
+            <select v-model="form.gender" required class="border p-2 rounded">
+              <option disabled value="">Pilih Jenis Kelamin</option>
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
+            <input type="date" v-model="form.birth_date" required class="border p-2 rounded" />
+            <input type="text" v-model="form.last_education" placeholder="Pendidikan Terakhir" class="border p-2 rounded" />
+            <input type="text" v-model="form.occupation" placeholder="Pekerjaan" class="border p-2 rounded" />
+            <textarea v-model="form.motivation" placeholder="Motivasi Belajar" class="border p-2 rounded"></textarea>
+            <input type="text" v-model="form.referral_source" placeholder="Sumber Informasi" class="border p-2 rounded" />
+            <input type="text" v-model="form.program_id"/>
+            <input type="hidden" v-model="form.ever_learned_arabic" />
+            <button type="submit" class="bg-[#3253A4] text-white py-2 rounded hover:bg-[#372b89]">
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </AtomsContainer>
   </section>
+
   <section v-else class="pt-2 md:pt-8 py-20">
     <AtomsContainer>
       <div class="lg:h-full w-full">
@@ -86,8 +84,8 @@
               </div>
               <br />
               <NuxtLink
-                to="/program/english?id={{ program.id }}"
-                class="py-2 border-[#9f91e1] bg-[#4633a8] text-white text-center rounded-lg transition duration-300"
+                :to="`/program/english?id=${ program.id }`"
+                class="py-2 border-[#9f91e1] bg-[#3253A4] text-white text-center rounded-lg transition duration-300"
                 style="margin-top: 10px"
               >
                 Lihat selengkapnya
@@ -101,7 +99,7 @@
 </template>
 <script setup lang="ts">
 useHead({
-  title: "Glotlink - Jasa Pembuatan Website Murah",
+  title: "Belajar Asik - Jasa Pembuatan Website Murah",
   htmlAttrs: {
     lang: "id",
   },
@@ -109,7 +107,7 @@ useHead({
     {
       name: "description",
       content:
-        "Digitalisasikan bisnismu bersama GLOTLINK Kami menyediakan solusi digital seperti website, aplikasi, dan strategi pemasaran online.",
+        "Digitalisasikan bisnismu bersama Belajar Asik Kami menyediakan solusi digital seperti website, aplikasi, dan strategi pemasaran online.",
     },
     {
       name: "keywords",
@@ -123,12 +121,12 @@ useHead({
     // Open Graph
     {
       property: "og:title",
-      content: "Glotlink - Jasa Pembuatan Website Murah",
+      content: "Belajar Asik - Jasa Pembuatan Website Murah",
     },
     {
       property: "og:description",
       content:
-        "Digitalisasikan bisnismu bersama GLOTLINK Solusi digital untuk era modern.",
+        "Digitalisasikan bisnismu bersama Belajar Asik Solusi digital untuk era modern.",
     },
     {
       property: "og:image",
@@ -136,7 +134,7 @@ useHead({
     },
     {
       property: "og:url",
-      content: "https://glotlink",
+      content: "https://lesbahasa",
     },
     {
       property: "og:type",
@@ -149,11 +147,11 @@ useHead({
     },
     {
       name: "twitter:title",
-      content: "Glotlink - Jasa Pembuatan Website Murah",
+      content: "Belajar Asik - Jasa Pembuatan Website Murah",
     },
     {
       name: "twitter:description",
-      content: "Solusi digital untuk bisnismu dari Glotlink",
+      content: "Solusi digital untuk bisnismu dari Belajar Asik",
     },
     {
       name: "twitter:image",
@@ -164,11 +162,11 @@ useHead({
     {
       rel: "icon",
       type: "image/png",
-      href: "/logo.webp",
+      href: "/logo-logo-lesbahasa.png",
     },
     {
       rel: "canonical",
-      href: "https://glotlink",
+      href: "https://lesbahasa",
     },
   ],
 });
@@ -282,10 +280,62 @@ const paginatedPrograms = computed(() => {
 
 // Ambil ID dari route dan fetch data saat component mount
 onMounted(() => {
-  const programId = route.params.id; // Ambil ID dari route param
+  const programId = route.query.id as string;
+ // Ambil ID dari route param
   if (programId) {
     fetchProgram(programId);
   }
   fetchPrograms();
 });
+
+const form = ref({
+  name: "",
+  email: "",
+  whatsapp: "",
+  gender: "",
+  birth_date: "",
+  last_education: "",
+  occupation: "",
+  motivation: "",
+  referral_source: "",
+  program_id: "",
+  ever_learned_arabic: false,
+});
+
+const handleSubmit = async () => {
+  try {
+    form.value.program_id = route.query.id as string;
+    const response = await fetch("https://cms-les.naditechno.id/api/program/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form.value),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert("Pendaftaran berhasil!");
+      form.value = { // Reset
+        name: "",
+        email: "",
+        whatsapp: "",
+        gender: "",
+        birth_date: "",
+        last_education: "",
+        occupation: "",
+        motivation: "",
+        referral_source: "",
+        program_id: "",
+        ever_learned_arabic: false,
+      };
+    } else {
+      console.error("Gagal menyimpan data:", data);
+      alert("Terjadi kesalahan saat mendaftar.");
+    }
+  } catch (error) {
+    console.error("Error saat submit:", error);
+    alert("Terjadi kesalahan jaringan.");
+  }
+};
 </script>

@@ -7,7 +7,7 @@
           <div class="w-full relative flex items-center justify-center">
             <img
               src="/images/img-service.jpg"
-              alt="Glotlink"
+              alt="Belajar Asik"
               class="w-full object-cover rounded-2xl shadow-lg border border-box-border"
             />
           </div>

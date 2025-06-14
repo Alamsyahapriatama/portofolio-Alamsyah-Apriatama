@@ -1,5 +1,24 @@
 <template>
-    <section class="relative w-full lg:mt-20">
+    <section class="h-[300px] bg-[#3253A4] bg-cover bg-center">
+      <AtomsContainer class="h-full">
+        <!-- Judul -->
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-6 h-full">
+          <div class="relative min-h-[180px] h-full flex items-center justify-center">
+            <div class="absolute left-0 top-0 h-full w-full flex justify-end">
+              <span class="flex opacity-20">
+                <span class="w-16 h-32 rounded-l-full flex bg-primary blur-2xl"></span>
+                <span class="w-16 h-32 rounded-r-full flex bg-[#f88fc2] blur-2xl mt-14"></span>
+              </span>
+            </div>
+            <div class="relative mt-[105px]">
+              <h3 class="text-center text-white text-5xl font-semibold">Kelas Offline 🧑‍🎓</h3>
+              <h3 class="text-center text-white text-2xl mt-2">Dari Canggung ke Cas-Cis-Cus, Bareng Les Belajar!</h3>
+            </div>
+          </div>
+        </div>
+      </AtomsContainer>
+    </section>
+    <section class="relative w-full py-8">
       <AtomsContainer class-name="relative">
         <div
           aria-hidden="true"
@@ -10,17 +29,16 @@
           ></div>
         </div>
         <div
-          class="grid lg:grid-cols-2 gap-10 xl:gap-14 relative pt-24 lg:max-w-none max-w-2xl md:max-w-3xl mx-auto"
+          class="grid lg:grid-cols-2 gap-10 xl:gap-14 relative lg:max-w-none max-w-2xl md:max-w-3xl mx-auto"
         >
           <div class="lg:py-6">
             <div class="text-center lg:text-left">
-  
               <h1
                 class="text-gray-800 pt-12 dark:text-black font-bold text-3xl md:text-5xl lg:text-5xl"
               >
                 Nikmati lah kemudahan belajar
                 <span
-                  class="text-transparent text-[#4633a8] bg-clip-text bg-[#9f91e1]"
+                  class="text-transparent text-[#3253A4] bg-clip-text bg-[#9f91e1]"
                   >Kelas Offline</span
                 >
               </h1>
@@ -30,7 +48,6 @@
           <div class="lg:h-full hidden md:flex">
             <div
               class="flex w-full h-96 min-h-[28rem] lg:min-h-[none] lg:w-full lg:h-full items-center relative"
-              style="margin-top: -28px"
             >
               <div
                 class="absolute z-0 top-1/2 -translate-y-1/2 w-5/6 right-0 h-[calc(80%+20px)] bg-gradient-to-tr opacity-25 from-primary to-pink-300 dark:from-[#570cac] dark:to-primary blur-2xl"
@@ -38,7 +55,7 @@
               <div class="absolute w-5/5 h-full z-10 p-1 -translate-y-1/2 top-1/2 right-3 rounded-3xl shadow-lg shadow-box-shadow">
                 <img
                   src="/images/hero-kelas.webp"
-                  alt="Glotlink"
+                  alt="Belajar Asik"
                   width="auto"
                   height="auto"
                   loading="lazy"
@@ -52,7 +69,7 @@
       </AtomsContainer>
     </section>
 
-    <section class="pt-14 md:pt-14 py-20">
+    <section class="pt-2 md:pt-2 py-8">
       <AtomsContainer>
         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-6 pt-8">
               <div class="md:py-2 lg:py-4 relative min-h-[180px]">
@@ -139,7 +156,7 @@
     </section>
       
     <a
-      href="https://wa.me/6281998002469"
+      href="https://wa.me/6287877131161"
       target="_blank"
       class="fixed bottom-8 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110"
     >
@@ -149,14 +166,14 @@
     
   <script setup lang="ts">
   useHead({
-    title: "Glotlink - Jasa Pembuatan Website Murah",
+    title: "Belajar Asik - Jasa Pembuatan Website Murah",
     htmlAttrs: {
       lang: "id",
     },
     meta: [
       {
         name: "description",
-        content: "Digitalisasikan bisnismu bersama GLOTLINK Kami menyediakan solusi digital seperti website, aplikasi, dan strategi pemasaran online.",
+        content: "Digitalisasikan bisnismu bersama Belajar Asik Kami menyediakan solusi digital seperti website, aplikasi, dan strategi pemasaran online.",
       },
       {
         name: "keywords",
@@ -165,21 +182,21 @@
       { name: "robots", content: "index, follow" },
   
       // Open Graph
-      { property: "og:title", content: "Glotlink - Jasa Pembuatan Website Murah" },
-      { property: "og:description", content: "Digitalisasikan bisnismu bersama GLOTLINK Solusi digital untuk era modern." },
+      { property: "og:title", content: "Belajar Asik - Jasa Pembuatan Website Murah" },
+      { property: "og:description", content: "Digitalisasikan bisnismu bersama Belajar Asik Solusi digital untuk era modern." },
       { property: "og:image", content: "/og-image.png" },
-      { property: "og:url", content: "https://glotlink" },
+      { property: "og:url", content: "https://lesbahasa" },
       { property: "og:type", content: "website" },
   
       // Twitter Card
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Glotlink - Jasa Pembuatan Website Murah" },
-      { name: "twitter:description", content: "Solusi digital untuk bisnismu dari Glotlink" },
+      { name: "twitter:title", content: "Belajar Asik - Jasa Pembuatan Website Murah" },
+      { name: "twitter:description", content: "Solusi digital untuk bisnismu dari Belajar Asik" },
       { name: "twitter:image", content: "/og-image.png" },
     ],
     link: [
-      { rel: "icon", type: "image/png", href: "/logo.webp" },
-      { rel: "canonical", href: "https://glotlink" },
+      { rel: "icon", type: "image/png", href: "/logo-logo-lesbahasa.png" },
+      { rel: "canonical", href: "https://lesbahasa" },
     ],
   });
   
@@ -201,7 +218,7 @@
   // Fetch API
   const fetchBlogs = async () => {
     try {
-      const response = await fetch('https://api-community-management.glotlink/galeri', {
+      const response = await fetch('https://api-community-management.lesbahasa/galeri', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -217,7 +234,7 @@
           content: item.content,
           slug: item.slug,
           image: '/images/kelas-offline.webp',
-          // image: `https://api-community-management.glotlink/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
+          // image: `https://api-community-management.lesbahasa/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
         }));
       } else {
         console.error('Format data tidak sesuai:', data);
@@ -243,7 +260,7 @@
   // Fetch Testimoni dari API
   const fetchTestimonis = async () => {
     try {
-      const response = await fetch('https://api-community-management.glotlink/testimoni', {
+      const response = await fetch('https://api-community-management.lesbahasa/testimoni', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -295,7 +312,7 @@ const layanans = ref<Layanan[]>([]);
 // Fetch API
 const fetchLayanans = async () => {
     try {
-    const response = await fetch('https://api-community-management.glotlink/layanan?orderBy=nomor&order=ASC', {
+    const response = await fetch('https://api-community-management.lesbahasa/layanan?orderBy=nomor&order=ASC', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -310,7 +327,7 @@ const fetchLayanans = async () => {
         title: item.title,
         content: item.content,
         note: item.note,
-        image: `https://api-community-management.glotlink/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
+        image: `https://api-community-management.lesbahasa/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
         nominal: item.nominal,
         }));
     } else {

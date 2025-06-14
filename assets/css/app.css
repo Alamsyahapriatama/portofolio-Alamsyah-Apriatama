@@ -16,7 +16,6 @@
     --box-sd: transparent;
     --bg-primary: #00bdfe;
 }
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,11 +23,10 @@ html{
     @apply scroll-smooth;
 }
 
-*{
-    font-family: 'Alata', sans-serif;
+* {
+    font-family: "Poppins", sans-serif; /* Atau 'Poiret One', sans-serif; jika Anda lebih suka fallback ke sans-serif */
 }
-<link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
-  
+
 body{
     @apply bg-body transition overflow-x-hidden;
 }

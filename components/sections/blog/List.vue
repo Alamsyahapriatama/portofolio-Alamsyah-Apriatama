@@ -103,7 +103,7 @@ const goToBlog = (slug: string) => {
     <AtomsContainer>
       <!-- FILTER & EVENT LIST -->
       <div class="">
-        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="mt-[-40px] md:mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <div 
               v-for="blog in paginatedBlogs"
               :key="blog.id"
@@ -125,7 +125,7 @@ const goToBlog = (slug: string) => {
               </div>
               <br>
               <button 
-                  class="mt-auto px-4 py-2 bg-[#4633a8] text-white rounded-lg hover:bg-opacity-80 transition duration-300"
+                  class="mt-auto px-4 py-2 bg-[#3253A4] text-white font-semibold rounded-lg hover:bg-opacity-80 transition duration-300"
                   @click="goToBlog(blog.slug)"
               >
                   Lihat Selengkapnya

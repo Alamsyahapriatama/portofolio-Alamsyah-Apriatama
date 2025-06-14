@@ -12,7 +12,7 @@
             </div>
             <div class="relative">
               <h3 class="text-center text-white text-6xl font-semibold">Lokasi 🧑‍🎓</h3>
-              <h3 class="text-center text-white text-2xl mt-2">Dari Canggung ke Cas-Cis-Cus, Bareng Glotlink!</h3>
+              <h3 class="text-center text-white text-2xl mt-2">Dari Canggung ke Cas-Cis-Cus, Bareng Les Belajar!</h3>
             </div>
           </div>
         </div>

@@ -2,81 +2,83 @@
 import { useRoute, useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
 const router = useRouter();
+const form = ref({
+  master_carrer_id: "1",
+  name: "",
+  email: "",
+  whatsapp: "",
+  gender: "",
+  birth_date: "",
+  last_education: "",
+  occupation: "",
+  motivation: "",
+  referral_source: "",
+  pdf: false,
+});
 
-interface Karir {
-  id: string;
-  title: string;
-  content: string;
-  image: string;
-  slug: string;
-}
+const pdfFile = ref<File | null>(null);
 
-// Pagination
-const currentPage = ref(1);
-const itemsPerPage = 9;
-const blogs = ref<Karir[]>([]);
-
-// ✅ Helper function untuk limit kata
-const limitWords = (text: string, maxWords: number) => {
-  const words = text.split(' ');
-  if (words.length <= maxWords) return text;
-  return words.slice(0, maxWords).join(' ') + '...';
-};
-
-// Fetch API
-const fetchKarirs = async () => {
-  try {
-    const response = await fetch('https://api-community-management.glotlink/blog?limit=4', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-PERUSAHAAN': 'da20774f-0164-405d-bf5a-38b5ec27a92e' // Ganti sesuai kebutuhan
-      }
-    });
-    const data = await response.json();
-
-    if (data && data.data.items && Array.isArray(data.data.items)) {
-      blogs.value = data.data.items.map((item: any) => ({
-        id: item.id,
-        title: item.title,
-        content: item.content,
-        slug: item.slug,
-        image: `https://api-community-management.glotlink/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
-      }));
-    } else {
-      console.error('Format data tidak sesuai:', data);
-    }
-
-  } catch (error) {
-    console.error('Gagal memuat data blog:', error);
+const handleFileChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  if (target.files && target.files.length > 0) {
+    pdfFile.value = target.files[0];
+  } else {
+    pdfFile.value = null;
   }
 };
 
+const handleSubmit = async () => {
+  try {
+    const formData = new FormData();
 
-// Panggil API saat mount
-onMounted(() => {
-  fetchKarirs();
-});
+    // Append semua field ke FormData
+    Object.entries(form.value).forEach(([key, value]) => {
+      // Jika ada boolean false, konversi ke string agar FormData valid
+      if (typeof value === 'boolean') {
+        formData.append(key, value ? 'true' : 'false');
+      } else if (value !== null && value !== undefined) {
+        formData.append(key, value);
+      }
+    });
 
-const filteredKarirs = computed(() => {
-  return blogs.value
-});
-
-// Pagination logika
-const totalPages = computed(() => Math.ceil(filteredKarirs.value.length / itemsPerPage));
-const nextPage = () => { if (currentPage.value < totalPages.value) currentPage.value++; };
-const prevPage = () => { if (currentPage.value > 1) currentPage.value--; };
-
-// Pagination blog
-const paginatedKarirs = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  return filteredKarirs.value.slice(start, start + itemsPerPage);
-});
+    // Append file PDF jika ada
+    if (pdfFile.value) {
+      formData.append('pdf', pdfFile.value);
+    }
 
 
-// Fungsi Navigasi
-const goToKarir = (slug: string) => {
-  router.push(`/karir/${slug}`);
+    const response = await fetch("https://cms-les.naditechno.id/api/carrer/register", {
+      method: "POST",
+      // Jangan set header Content-Type, biarkan browser atur otomatis
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert("Pendaftaran berhasil!");
+      form.value = {
+        master_carrer_id: "1",
+        name: "",
+        email: "",
+        whatsapp: "",
+        gender: "",
+        birth_date: "",
+        last_education: "",
+        occupation: "",
+        motivation: "",
+        referral_source: "",
+        pdf: false,
+      };
+      pdfFile.value = null;
+      // Jika mau reset input file juga, bisa tambah ref pada input file dan reset value di situ
+    } else {
+      console.error("Gagal menyimpan data:", data);
+      alert("Terjadi kesalahan saat mendaftar.");
+    }
+  } catch (error) {
+    console.error("Error saat submit:", error);
+    alert("Terjadi kesalahan jaringan.");
+  }
 };
 
 </script>
@@ -103,62 +105,37 @@ const goToKarir = (slug: string) => {
   <section class="py-20" id="profile">
     <AtomsContainer>
       <!-- FILTER & EVENT LIST -->
-      <div class="">
-        <div class="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
-            <!-- Judul Event -->
-            <h3 class="text-black-800 dark:text-black font-bold text-3xl">Karir</h3>
-        </div>
+      <div class="lg:w-5/5 w-full bg-white rounded-xl shadow-md p-8 mt-[-60px]">
+          <h2 class="text-2xl font-bold mb-6 text-center text-black">
+            Form Pendaftaran
+          </h2>
+          <form class="grid grid-cols-1 gap-4" @submit.prevent="handleSubmit">
+            <input type="text" v-model="form.name" placeholder="Nama Lengkap" required class="border p-2 rounded" />
+            <input type="email" v-model="form.email" placeholder="Email" required class="border p-2 rounded" />
+            <input type="tel" v-model="form.whatsapp" placeholder="No HP" required class="border p-2 rounded" />
+            <select v-model="form.gender" required class="border p-2 rounded">
+              <option disabled value="">Pilih Jenis Kelamin</option>
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
+            <input type="date" v-model="form.birth_date" required class="border p-2 rounded" />
+            <input type="text" v-model="form.last_education" placeholder="Pendidikan Terakhir" class="border p-2 rounded" />
+            <input type="text" v-model="form.occupation" placeholder="Pekerjaan" class="border p-2 rounded" />
+            <textarea v-model="form.motivation" placeholder="Motivasi Mengajar" class="border p-2 rounded"></textarea>
+            <input type="text" v-model="form.referral_source" placeholder="Sumber Informasi" class="border p-2 rounded" />
+            <input
+              type="file"
+              accept="application/pdf"
+              @change="handleFileChange"
+              class="border p-2 rounded"
+            />
 
-
-        <!-- Event List -->
-        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div 
-              v-for="blog in paginatedKarirs"
-              :key="blog.id"
-              class="bg-white p-4 rounded-xl shadow-lg transform transition duration-300 ease-in-out hover:scale-105 flex flex-col justify-between"
-          >
-              <div>
-                  <img 
-                      :src="blog.image" 
-                      :alt="blog.title" 
-                      class="object-cover rounded-xl w-full h-40 opacity-0 animate-fade-in transition duration-500 ease-in-out"
-                  />
-                  <h3 class="mt-4 text-black-800 dark:text-black-200 text-lg font-semibold">
-                      {{ blog.title }}
-                  </h3>
-                  <div
-                    class="blog-content text-black-600 dark:text-black-300 text-md leading-relaxed pt-4"
-                    v-html="limitWords(blog.content, 16)"
-                  ></div>
-              </div>
-              <br>
-              <button 
-                  class="mt-auto px-4 py-2 bg-[#9f91e1] text-black rounded-lg hover:bg-opacity-80 transition duration-300"
-                  @click="goToKarir(blog.slug)"
-              >
-                  Lihat Selengkapnya
-              </button>
-          </div>
+            <input type="hidden" v-model="form.ever_learned_arabic" />
+            <button type="submit" class="bg-[#3253A4] text-white py-2 rounded hover:bg-[#372b89]">
+              Submit
+            </button>
+          </form>
         </div>
-
-        <!-- Pagination -->
-        <div class="mt-6 flex justify-center gap-4">
-          <button 
-            @click="prevPage" 
-            :disabled="currentPage === 1" 
-            class="px-4 py-2 bg-black-300 dark:bg-black-700 text-black-800 dark:text-black rounded-md disabled:opacity-50"
-          >
-            Previous
-          </button>
-          <button 
-            @click="nextPage" 
-            :disabled="currentPage === totalPages" 
-            class="px-4 py-2 bg-black-300 dark:bg-black-700 text-black-800 dark:text-black rounded-md disabled:opacity-50"
-          >
-            Next
-          </button>
-        </div>
-      </div>
     </AtomsContainer>
   </section>
 </template>

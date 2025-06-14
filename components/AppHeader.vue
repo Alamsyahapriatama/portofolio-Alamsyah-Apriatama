@@ -101,7 +101,7 @@ const hoveredMenu = ref<string | null>(null);
     :class="[
       'mx-auto flex items-center justify-between transition-all duration-300 ease-in-out',
       isScrolled
-        ? 'w-full bg-[#4633a8] text-white rounded-none px-36 py-2'
+        ? 'w-full bg-[#3253A4] text-gray-200-200 rounded-none px-24 py-2'
         : 'w-[80%] mt-8 bg-white text-black rounded-xl shadow-lg px-6 py-3'
     ]"
   >
@@ -109,16 +109,10 @@ const hoveredMenu = ref<string | null>(null);
     <div class="inline-flex items-center gap-2">
       <NuxtLink to="/" class="flex items-center gap-2">
         <img
-          src="/logo.webp"
+          src="/logo-lesbahasa.png"
           alt="logo"
           class="h-12 rounded-l-full"
         />
-        <span
-          class="hidden sm:inline text-3xl transition-all"
-          :class="isScrolled ? 'text-white' : 'text-black'"
-        >
-          GLOTLINK
-        </span>
       </NuxtLink>
     </div>
 
@@ -126,7 +120,8 @@ const hoveredMenu = ref<string | null>(null);
     <div
       :class="[
         'transition-all duration-300 ease-in-out flex flex-col lg:flex-row lg:items-center gap-6',
-        navIsOpen ? 'visible opacity-100 translate-y-0 absolute top-full left-0 w-full bg-white p-4 z-50' : 'hidden lg:flex'
+        navIsOpen ? 'visible opacity-100 translate-y-0 absolute top-full left-0 w-full p-4 z-50' : 'hidden lg:flex',
+        isScrolled ? 'bg-[#3253A4]' : 'bg-white'
       ]"
     >
       <ul
@@ -135,7 +130,11 @@ const hoveredMenu = ref<string | null>(null);
           isScrolled ? 'text-white' : 'text-black'
         ]"
       >
-        <li v-for="navItem in navLinks" :key="navItem.text" class="relative">
+        <li 
+          v-for="navItem in navLinks" 
+          :key="navItem.text"
+          class="relative"
+        >
           <AtomsNavLink
             v-if="!navItem.hasDropdown"
             :href="navItem.href ?? ''"
@@ -150,13 +149,12 @@ const hoveredMenu = ref<string | null>(null);
           >
             <button class="flex items-center gap-2 text-xl mt-[1px]">
               {{ navItem.text }}
-              <span class="text-xs">▼</span>
             </button>
             <ul
               v-if="hoveredMenu === navItem.text"
               :class="[
                 'absolute top-full left-0 w-48 shadow-lg transition duration-200 z-10 rounded-lg',
-                isScrolled ? 'text-white bg-[#4633a8]' : 'text-black bg-white'
+                isScrolled ? 'text-black-200 bg-[#3253A4]' : 'text-black bg-white'
               ]"
             >
               <li
@@ -164,7 +162,7 @@ const hoveredMenu = ref<string | null>(null);
                 :key="subItem.text"
                 :class="[
                   'px-4 py-2 rounded-lg ',
-                  isScrolled ? 'hover:bg-[#6c5ce7]' : 'hover:bg-[#F2F2F2]'
+                  isScrolled ? 'hover:bg-[#3253A4]' : 'hover:bg-[#41A8DF]'
                 ]"
               >
                 <NuxtLink :to="subItem.href" @click="handleMenuClick">{{ subItem.text }}</NuxtLink>

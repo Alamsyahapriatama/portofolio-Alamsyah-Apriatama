@@ -10,9 +10,9 @@
                         </span>
                     </div>
                     <div class="relative">
-                        <AtomsTitle texte="Hubungi Kami – Glotlink" />
+                        <AtomsTitle texte="Hubungi Kami – Belajar Asik" />
                         <h3 class="text-black-800 dark:text-black-200 font-semibold text-xl pt-4">
-                            Digitalisasikan Bisnismu Bersama Glotlink
+                            Digitalisasikan Bisnismu Bersama Belajar Asik
                         </h3>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <template>
-  <section class="h-[250px] mt-[80px] bg-[#9f91e1] bg-cover bg-center">
+  <section class="h-[300px] bg-[#3253A4] bg-cover bg-center">
     <AtomsContainer class="h-full">
       <!-- Judul -->
       <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-6 h-full">
@@ -10,9 +10,9 @@
               <span class="w-16 h-32 rounded-r-full flex bg-[#f88fc2] blur-2xl mt-14"></span>
             </span>
           </div>
-          <div class="relative">
-            <h3 class="text-center text-white text-6xl font-semibold">Harga 🧑‍🎓</h3>
-            <h3 class="text-center text-white text-2xl mt-2">Dari Canggung ke Cas-Cis-Cus, Bareng Glotlink!</h3>
+          <div class="relative mt-[105px]">
+            <h3 class="text-center text-white text-5xl font-semibold">Kelas Offline 🧑‍🎓</h3>
+            <h3 class="text-center text-white text-2xl mt-2">Dari Canggung ke Cas-Cis-Cus, Bareng Les Belajar!</h3>
           </div>
         </div>
       </div>

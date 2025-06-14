@@ -4,7 +4,7 @@
         <div class="grid md:grid-cols-2 gap-10 xl:gap-14 relative">
           <div class="flex md:h-full">
             <div class="w-full md:h-full rounded-3xl border border-box-border">
-              <NuxtImg src="/images/product-fitur.jpg" alt="Glotlink" class="w-full h-full object-cover rounded-2xl" />
+              <NuxtImg src="/images/product-fitur.jpg" alt="Belajar Asik" class="w-full h-full object-cover rounded-2xl" />
             </div>
           </div>
           <div class="md:py-2 lg:py-4 relative">
@@ -27,7 +27,7 @@
         </div>
         <iframe 
             class="pt-4 rounded-xl"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0412562266088!2d106.7793264748294!3d-6.258295993730252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c4234cab542d%3A0xbaea8abe6bfb3227!2sGLOTLINK%20Languages!5e0!3m2!1sid!2sid!4v1745572281906!5m2!1sid!2sid" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0412562266088!2d106.7793264748294!3d-6.258295993730252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c4234cab542d%3A0xbaea8abe6bfb3227!2sBelajar Asik%20Languages!5e0!3m2!1sid!2sid!4v1745572281906!5m2!1sid!2sid" 
             width="100%" 
             height="450" 
             style="border:0;"
@@ -64,7 +64,7 @@
     // Fetch API
     const fetchLayanans = async () => {
       try {
-        const response = await fetch('https://api-community-management.glotlink/layanan?orderBy=nomor&order=ASC', {
+        const response = await fetch('https://api-community-management.lesbahasa/layanan?orderBy=nomor&order=ASC', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -78,7 +78,7 @@
             title: item.title,
             content: item.content,
             note: item.note,
-            image: `https://api-community-management.glotlink/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
+            image: `https://api-community-management.lesbahasa/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
             nominal: item.nominal,
           }));
         } else {

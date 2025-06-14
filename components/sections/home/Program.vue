@@ -1,157 +1,138 @@
-
 <template>
-    <section class="pt-2 md:pt-6 py-20">
-        <AtomsContainer>
-            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-6 pt-8">
-                <div class="md:py-2 lg:py-4 relative">
-                    <div class="absolute left-0 top-0 h-full w-full flex justify-end">
-                    <span class="flex opacity-20">
-                        <span class="w-16 h-32 rounded-l-full flex bg-primary blur-2xl"></span>
-                        <span class="w-16 h-32 rounded-r-full flex bg-[#f88fc2] blur-2xl mt-14"></span>
-                    </span>
-                    </div>
-                    <div class="relative">
-                      <h3 class="text-center text-black text-3xl font-semibold">Rekomendasi Program</h3>
-                    </div>
-                </div>
+  <section class="pt-2 md:pt-2 py-8">
+    <AtomsContainer>
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-6">
+        <div class="md:py-2 lg:py-4 relative">
+          <div class="absolute left-0 top-0 h-full w-full flex justify-end">
+            <span class="flex opacity-20">
+              <span class="w-16 h-32 rounded-l-full flex bg-primary blur-2xl"></span>
+              <span class="w-16 h-32 rounded-r-full flex bg-[#f88fc2] blur-2xl mt-14"></span>
+            </span>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-28">
-            <div 
-              v-for="layanan in paginatedLayanans"
-              :key="layanan.id"
-              class="rounded-xl shadow-lg transform transition duration-300 ease-in-out bg-[#F3F3F3] hover:scale-105 p-6 h-full hover:text-black group"
-            >
-              <div class="flex flex-col items-center text-center h-full">
-                <div class="md:mt-[-120px] w-full">
-                  <NuxtImg 
-                    src="https://ayocerdas.com/wp-content/uploads/2023/03/COBA-GRATIS-02.png"
-                    :alt="layanan.title"
-                    class="w-full rounded-xl"
-                    width="auto"
-                    height="80"
-                  />
-                </div>
-
-                <!-- Konten -->
-                <div class="flex flex-col flex-1 h-full mt-2 w-full">
-                  <!-- Title -->
-                  <h3 class="text-xl font-semibold mb-4 pt-2">Easy English for Adults</h3>
-                  <p class="text-md">Program Bahasa Inggris umum secara komprehensif untuk pemula dewasa menggunakan metode pengajaran visual yang mudah dipelajari.</p>
-                  <br>
-                  <button 
-                    class="mt-auto px-4 py-2 bg-[#9f91e1] text-black rounded-lg hover:bg-opacity-80 transition duration-300"
-                  >
-                      Lihat
-                  </button>
-                </div>
+          <div class="relative">
+            <h3 class="text-center text-black text-3xl font-semibold">Rekomendasi Program</h3>
+          </div>
+        </div>
+      </div>
+      <div class="lg:h-full w-full">
+        <div class="relative">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-2">
+            <div v-for="program in paginatedPrograms" :key="program.id" class="bg-white p-4 rounded-xl shadow-lg transform transition duration-300 ease-in-out hover:scale-105 flex flex-col justify-between">
+              <div>
+                <img :src="program.image" :alt="program.name" class="object-cover rounded-xl w-full h-40 opacity-0 animate-fade-in transition duration-500 ease-in-out" />
+                <h3 class="mt-4 text-black-800 dark:text-black-200 text-lg font-semibold">
+                  {{ program.name }}
+                </h3>
+                <div class="program-content text-black-600 dark:text-black-300 text-md leading-relaxed pt-4" v-html="limitWords(program.description, 16)"></div>
               </div>
+              <br />
+              <NuxtLink :to="`/program/english?id=${ program.id }`" class="py-2 border-[#9f91e1] bg-[#3253A4] text-white font-semibold text-center rounded-lg transition duration-300" style="margin-top: 10px"> Lihat selengkapnya </NuxtLink>
             </div>
           </div>
-
-
-        </AtomsContainer>
-    </section>
+        </div>
+      </div>
+    </AtomsContainer>
+  </section>
 </template>
-
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router';
-import { ref, onMounted } from 'vue';
-
-interface Layanan {
+  import {
+    useRoute,
+    useRouter
+  } from 'vue-router';
+  import {
+    ref,
+    onMounted
+  } from 'vue';
+  interface Program {
     id: string;
-    title: string;
-    content: string;
-    note: string;
+    name: string;
+    description: string;
     image: string;
-    nominal: number;
-}
-
-// Pagination
-const currentPage = ref(1);
-const itemsPerPage = 3;
-const layanans = ref<Layanan[]>([]);
-
-// Fetch API
-const fetchLayanans = async () => {
+    price: string;
+    estimated_time: string;
+  }
+  // Pagination
+  const currentPage = ref(1);
+  const itemsPerPage = 9;
+  const programs = ref < Program[] > ([]);
+  // ✅ Helper function untuk limit kata
+  const limitWords = (text: string, maxWords: number) => {
+    const words = text.split(" ");
+    if (words.length <= maxWords) return text;
+    return words.slice(0, maxWords).join(" ") + "...";
+  };
+  // Fetch API
+  const fetchPrograms = async () => {
     try {
-    const response = await fetch('https://api-community-management.glotlink/layanan?orderBy=nomor&order=ASC', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-PERUSAHAAN': 'da20774f-0164-405d-bf5a-38b5ec27a92e'
-      }
-    });
-    const data = await response.json();
-
-    if (data && data.data.items && Array.isArray(data.data.items)) {
-        layanans.value = data.data.items.map((item: any) => ({
-        id: item.id,
-        title: item.title,
-        content: item.content,
-        note: item.note,
-        image: `https://api-community-management.glotlink/media/${item.image}`, // Pastikan base URL sesuai kebutuhan
-        nominal: item.nominal,
+      const response = await fetch("https://cms-les.naditechno.id/api/program/list/1?limit=3", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      if (data && data.data && Array.isArray(data.data)) {
+        programs.value = data.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          estimated_time: item.estimated_time,
+          description: item.description,
+          image: `${item.media[0].original_url}`, // Pastikan base URL sesuai kebutuhan
         }));
-    } else {
-        console.error('Format data tidak sesuai:', data);
-    }
-
+      } else {
+        console.error("Format data tidak sesuai:", data);
+      }
     } catch (error) {
-    console.error('Gagal memuat data layanan:', error);
+      console.error("Gagal memuat data program:", error);
     }
-};
-
-
-// Panggil API saat mount
-onMounted(() => {
-    fetchLayanans();
-});
-
-const filteredLayanans = computed(() => {
-    return layanans.value
-});
-
-// Pagination layanan
-const paginatedLayanans = computed(() => {
+  };
+  const filteredPrograms = computed(() => {
+    return programs.value;
+  });
+  // Pagination logika
+  const totalPages = computed(() => Math.ceil(filteredPrograms.value.length / itemsPerPage));
+  const nextPage = () => {
+    if (currentPage.value < totalPages.value) currentPage.value++;
+  };
+  const prevPage = () => {
+    if (currentPage.value > 1) currentPage.value--;
+  };
+  // Pagination program
+  const paginatedPrograms = computed(() => {
     const start = (currentPage.value - 1) * itemsPerPage;
-    return filteredLayanans.value.slice(start, start + itemsPerPage);
-});
-
-const formatRupiah = (value: number): string => {
-    if (!value) return 'Rp 0';
-    return new Intl.NumberFormat('id-ID', { 
-        style: 'currency', 
-        currency: 'IDR',
-        minimumFractionDigits: 0, // Tanpa digit desimal
-        maximumFractionDigits: 0  // Tanpa digit desimal
-    }).format(value);
-};
-
+    return filteredPrograms.value.slice(start, start + itemsPerPage);
+  });
+  // Ambil ID dari route dan fetch data saat component mount
+  onMounted(() => {
+    fetchPrograms();
+  });
 </script>
-
 <style>
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    .animate-fade-in {
-        animation: fade-in 1s ease-out forwards;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
 </style>
-        
 <style scoped>
-.pricing-table th, .pricing-table td {
-  @apply border p-3 text-sm text-left;
-}
-.pricing-table thead tr{
-  background-color: #9f91e1;
-  color: white;
-}
+  .pricing-table th,
+  .pricing-table td {
+    @apply border p-3 text-sm text-left;
+  }
+
+  .pricing-table thead tr {
+    background-color: #9f91e1;
+    color: white;
+  }
 </style>
