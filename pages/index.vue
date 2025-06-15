@@ -8,21 +8,27 @@ useHead({
     {
       name: "description",
       // Deskripsi dioptimalkan dari input Anda, menyertakan nama brand dan esensi layanan
-      content: "Di Les Belajar, belajar bahasa tak lagi boring! Kami tawarkan les bahasa online yang seru, interaktif, dan relevan dengan kebutuhanmu di dunia nyata. Temukan cara baru belajar bahasa bersama kami!",
+      content:
+        "Di Les Belajar, belajar bahasa tak lagi boring! Kami tawarkan les bahasa online yang seru, interaktif, dan relevan dengan kebutuhanmu di dunia nyata. Temukan cara baru belajar bahasa bersama kami!",
     },
     {
       name: "keywords",
       // Keywords yang relevan dengan layanan kursus bahasa oleh Les Belajar
-      content: "Les Belajar, les bahasa, kursus bahasa online, belajar bahasa, bahasa asing, kursus interaktif, belajar bahasa seru, kursus bahasa menyenangkan, belajar bahasa efektif, platform belajar bahasa, les bahasa Inggris, les bahasa Mandarin, les bahasa Jepang, les bahasa Korea",
+      content:
+        "Les Belajar, les bahasa, kursus bahasa online, belajar bahasa, bahasa asing, kursus interaktif, belajar bahasa seru, kursus bahasa menyenangkan, belajar bahasa efektif, platform belajar bahasa, les bahasa Inggris, les bahasa Mandarin, les bahasa Jepang, les bahasa Korea",
     },
     { name: "robots", content: "index, follow" }, // Pengaturan robots sudah baik
 
     // Open Graph (untuk Facebook, LinkedIn, dll.)
-    { property: "og:title", content: "Les Belajar - Les Belajar Online Seru & Interaktif" }, // Konsisten dengan title utama
+    {
+      property: "og:title",
+      content: "Les Belajar - Les Belajar Online Seru & Interaktif",
+    }, // Konsisten dengan title utama
     {
       property: "og:description",
       // Deskripsi OG konsisten dengan meta description
-      content: "Belajar bahasa tak lagi boring! Di Les Belajar, kami ubah cara belajarmu jadi seru, interaktif, dan super relevan dengan dunia nyata.",
+      content:
+        "Belajar bahasa tak lagi boring! Di Les Belajar, kami ubah cara belajarmu jadi seru, interaktif, dan super relevan dengan dunia nyata.",
     },
     { property: "og:image", content: "https://glotlink.com/og-image.png" }, // URL absolut untuk OG image lebih disarankan. Pastikan gambar ini ada dan relevan.
     { property: "og:url", content: "https://glotlink.com/" }, // URL website Anda
@@ -31,15 +37,19 @@ useHead({
 
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" }, // summary_large_image biasanya lebih menarik
-    { name: "twitter:title", content: "Les Belajar - Les Belajar Online Seru & Interaktif" }, // Konsisten
+    {
+      name: "twitter:title",
+      content: "Les Belajar - Les Belajar Online Seru & Interaktif",
+    }, // Konsisten
     {
       name: "twitter:description",
-      content: "Belajar bahasa tak lagi boring! Di Les Belajar, kami ubah cara belajarmu jadi seru, interaktif, dan super relevan dengan dunia nyata.",
+      content:
+        "Belajar bahasa tak lagi boring! Di Les Belajar, kami ubah cara belajarmu jadi seru, interaktif, dan super relevan dengan dunia nyata.",
     },
     { name: "twitter:image", content: "https://glotlink.com/og-image.png" }, // URL absolut untuk Twitter image. Gunakan gambar yang sama dengan OG atau spesifik Twitter jika ada.
   ],
   link: [
-    { rel: "icon", type: "image/png", href: "/logo-logo-lesbahasa.png" }, // Sesuai yang Anda berikan, pastikan file ini ada dan relevan
+    { rel: "icon", type: "image/png", href: "/logo.png" }, // Sesuai yang Anda berikan, pastikan file ini ada dan relevan
     { rel: "canonical", href: "https://glotlink.com/" }, // URL kanonikal website Anda
   ],
 });
@@ -48,13 +58,13 @@ useHead({
   <div>
     <SectionsHomeHeroSection />
     <SectionsHomeAbout />
-    <SectionsHomeProgram />
-    <!-- <SectionsHomeBersama /> -->
+    <SectionsHomeLayanan />
+    <SectionsHomePortofolio />
+    <SectionsHomePriceList />
     <SectionsHomeKenapa />
-    <!-- <SectionsHomeAyo /> -->
-    <SectionsHomePartnership />
-    <SectionsHomeCta />
+    <SectionsHomeDidapat />
     <SectionsHomeTestimoni />
+    <SectionsHomeCta />
 
     <!-- Ikon WhatsApp Mengambang -->
     <a

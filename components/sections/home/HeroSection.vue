@@ -6,11 +6,11 @@ import { ref } from "vue";
 const heroContent = ref({
   id: "1",
   videoBackground: "/slider.mp4", // Path ke file video Anda
-  title: "Bimbingan Belajar Terpercaya untuk Setiap Jenjang Pendidikan.",
+  title: "Arsitektur Inovatif, Masa Depan Progresif",
   description:
-    "Bantu putra-putri Anda meraih nilai terbaik dan masuk sekolah impian bersama tutor ahli kami",
-  buttonText: "Lihat Program Kami",
-  buttonLink: "/kontak",
+    "Wujudkan visi Anda bersama kami, mitra terpercaya dalam desain rumah, komersial, dan proyek arsitektur mutakhir",
+  buttonText: "Lihat Portfolio Kami",
+  buttonLink: "/portfolio",
 });
 
 // Jika Anda tetap ingin mengambil data dari API, pastikan API mengembalikan

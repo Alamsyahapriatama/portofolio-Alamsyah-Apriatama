@@ -25,27 +25,74 @@
         </div>
 
         <!-- Kolom Kanan (Form) -->
-        <div class="lg:w-2/5 w-full bg-white rounded-xl shadow-md p-8 mt-[-20px]">
+        <div
+          class="lg:w-2/5 w-full bg-white rounded-xl shadow-md p-8 mt-[-20px]"
+        >
           <h2 class="text-2xl font-bold mb-6 text-center text-black">
             Form Pendaftaran
           </h2>
           <form class="grid grid-cols-1 gap-4" @submit.prevent="handleSubmit">
-            <input type="text" v-model="form.name" placeholder="Nama Lengkap" required class="border p-2 rounded" />
-            <input type="email" v-model="form.email" placeholder="Email" required class="border p-2 rounded" />
-            <input type="tel" v-model="form.whatsapp" placeholder="No HP" required class="border p-2 rounded" />
+            <input
+              type="text"
+              v-model="form.name"
+              placeholder="Nama Lengkap"
+              required
+              class="border p-2 rounded"
+            />
+            <input
+              type="email"
+              v-model="form.email"
+              placeholder="Email"
+              required
+              class="border p-2 rounded"
+            />
+            <input
+              type="tel"
+              v-model="form.whatsapp"
+              placeholder="No HP"
+              required
+              class="border p-2 rounded"
+            />
             <select v-model="form.gender" required class="border p-2 rounded">
               <option disabled value="">Pilih Jenis Kelamin</option>
               <option value="Laki-laki">Laki-laki</option>
               <option value="Perempuan">Perempuan</option>
             </select>
-            <input type="date" v-model="form.birth_date" required class="border p-2 rounded" />
-            <input type="text" v-model="form.last_education" placeholder="Pendidikan Terakhir" class="border p-2 rounded" />
-            <input type="text" v-model="form.occupation" placeholder="Pekerjaan" class="border p-2 rounded" />
-            <textarea v-model="form.motivation" placeholder="Motivasi Belajar" class="border p-2 rounded"></textarea>
-            <input type="text" v-model="form.referral_source" placeholder="Sumber Informasi" class="border p-2 rounded" />
-            <input type="text" v-model="form.program_id"/>
+            <input
+              type="date"
+              v-model="form.birth_date"
+              required
+              class="border p-2 rounded"
+            />
+            <input
+              type="text"
+              v-model="form.last_education"
+              placeholder="Pendidikan Terakhir"
+              class="border p-2 rounded"
+            />
+            <input
+              type="text"
+              v-model="form.occupation"
+              placeholder="Pekerjaan"
+              class="border p-2 rounded"
+            />
+            <textarea
+              v-model="form.motivation"
+              placeholder="Motivasi Belajar"
+              class="border p-2 rounded"
+            ></textarea>
+            <input
+              type="text"
+              v-model="form.referral_source"
+              placeholder="Sumber Informasi"
+              class="border p-2 rounded"
+            />
+            <input type="text" v-model="form.program_id" />
             <input type="hidden" v-model="form.ever_learned_arabic" />
-            <button type="submit" class="bg-[#3253A4] text-white py-2 rounded hover:bg-[#372b89]">
+            <button
+              type="submit"
+              class="bg-[#3253A4] text-white py-2 rounded hover:bg-[#372b89]"
+            >
               Submit
             </button>
           </form>
@@ -84,7 +131,7 @@
               </div>
               <br />
               <NuxtLink
-                :to="`/program/english?id=${ program.id }`"
+                :to="`/program/english?id=${program.id}`"
                 class="py-2 border-[#9f91e1] bg-[#3253A4] text-white text-center rounded-lg transition duration-300"
                 style="margin-top: 10px"
               >
@@ -162,7 +209,7 @@ useHead({
     {
       rel: "icon",
       type: "image/png",
-      href: "/logo-logo-lesbahasa.png",
+      href: "/logo.png",
     },
     {
       rel: "canonical",
@@ -281,7 +328,7 @@ const paginatedPrograms = computed(() => {
 // Ambil ID dari route dan fetch data saat component mount
 onMounted(() => {
   const programId = route.query.id as string;
- // Ambil ID dari route param
+  // Ambil ID dari route param
   if (programId) {
     fetchProgram(programId);
   }
@@ -305,18 +352,22 @@ const form = ref({
 const handleSubmit = async () => {
   try {
     form.value.program_id = route.query.id as string;
-    const response = await fetch("https://cms-les.naditechno.id/api/program/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form.value),
-    });
+    const response = await fetch(
+      "https://cms-les.naditechno.id/api/program/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form.value),
+      }
+    );
 
     const data = await response.json();
     if (response.ok) {
       alert("Pendaftaran berhasil!");
-      form.value = { // Reset
+      form.value = {
+        // Reset
         name: "",
         email: "",
         whatsapp: "",
