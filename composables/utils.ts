@@ -1,5 +1,5 @@
 // composables/utils.ts
-export const useFetch = async (options: {
+export const fetchData = async (options: {
   method: "GET" | "POST" | "PUT" | "DELETE";
   url: string;
   body?: any;

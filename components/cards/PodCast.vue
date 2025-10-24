@@ -1,47 +1,65 @@
 <template>
     <div
-        class="lg:p-1 relative h-auto flex flex-col lg:rounded-2xl lg:bg-box-bg lg:shadow-lg lg:shadow-box-shadow lg:border lg:border-box-border">
+        class="p-4 relative h-auto flex flex-col rounded-xl bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100">
+        
         <div class="relative h-max min-h-max">
-            <nuxt-img :src="coverImage" alt="Cover image" width="280"
-                class="w-full h-32 sm:h-36 md:h-40 lg:h-48 rounded-xl object-cover"/>
-                <span class="absolute top-2 right-2 px-2 rounded-full text-sm text-white bg-primary">
-            {{ duration }}
-        </span>
+            <nuxt-img :src="props.coverImage" :alt="props.title"
+                class="w-full h-48 rounded-lg object-cover" /> 
         </div>
-        <div class="lg:px-2 pt-2 lg:pb-4 xl:px-4 md:pt-4  h-full flex flex-col justify-between">
-            <div class="h-full">
-                <h2 class="font-semibold text-base md:text-lg lg:text-xl line-clamp-2 md:line-clamp-3 text-gray-700 dark:text-black">
-                    {{ title }}
-                </h2>
-            </div>
-            <div class="pt-3 sm:pt-5 min-h-max h-max">
-                <NuxtLink :to="href"
-                    class="flex relative group items-center text-white px-5 py-2 bg-primary gap-1 text-sm w-max rounded-full">
-                    <span class="absolute inset-0 rounded-full group-hover:scale-105 origin-center transition-all ease-in-out bg-primary">
 
+        <div class="pt-4 h-full flex flex-col justify-between">
+            <div class="h-full">
+                <h2
+                    class="font-bold text-lg lg:text-xl line-clamp-2 mb-2 text-gray-800">
+                    {{ props.title }}
+                </h2>
+                <p class="text-sm text-gray-600 line-clamp-3 mb-4">
+                    {{ props.description }}
+                </p>
+                
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span v-for="tag in props.tags" :key="tag"
+                        class="text-xs font-medium bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                        {{ tag }}
                     </span>
-                    <span class="relative flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                            fill="currentColor" class="w-3 h-3">
-                            <path fill-rule="evenodd"
-                                d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    Lihat sekarang
+                </div>
+            </div>
+            
+            <div class="pt-5 flex gap-3 min-h-max h-max">
+                
+                <NuxtLink v-if="props.liveUrl" :to="props.liveUrl" target="_blank"
+                    class="flex relative items-center text-white px-4 py-2 bg-primary gap-1 text-sm w-max rounded-lg hover:bg-green-600 transition">
+                    <span class="relative">
+                        Lihat Live
+                    </span>
+                </NuxtLink>
+                
+                <NuxtLink v-if="props.githubUrl" :to="props.githubUrl" target="_blank"
+                    class="flex relative items-center text-gray-700 px-4 py-2 border border-gray-300 gap-1 text-sm w-max rounded-lg hover:bg-gray-100 transition">
+                    <span class="relative">
+                        GitHub
                     </span>
                 </NuxtLink>
             </div>
         </div>
     </div>
 </template>
+
 <script lang="ts" setup>
-const { title, href, duration, coverImage, category, createdAt, description } = defineProps<{
-    title: string,
-    href: string,
-    duration: string,
-    coverImage: string,
-    category: string,
-    createdAt: string,
-    description: string
-}>()
+// SOLUSI: Impor defineProps secara eksplisit. 
+// Ini akan menenangkan Vetur/TypeScript di VS Code.
+import { defineProps } from 'vue'; 
+
+// Definisikan Interface untuk Props
+interface ProjectProps {
+    title: string;
+    liveUrl?: string;     // Link demo proyek (Opsional)
+    githubUrl?: string;   // Link GitHub (Opsional)
+    coverImage: string;
+    description: string;
+    tags: string[];       // Array teknologi yang digunakan
+}
+
+// Mengambil props sebagai objek tunggal 'props'
+const props = defineProps<ProjectProps>()
 </script>
